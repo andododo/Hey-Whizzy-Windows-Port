@@ -1,12 +1,13 @@
 # Hey Whizzy
 ## Capstone 2023IT07
 
+Capstone Project of:  
+Andrei Magbuhat, John Tiu, Neil Guingcangco, and Owen Santos.
+
 <a href="https://github.com/Hir0su/Hey-Whizzy/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Hir0su/Hey-Whizzy" />
 </a>
-
-Capstone Project of:  
-Andrei Magbuhat, John Tiu, Neil Guingcangco, and Owen Santos.
+<br>
 
 This is the Windows port for our capstone. This is a requirement for revisions and for our adviser's showcase.
 
