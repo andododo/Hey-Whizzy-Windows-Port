@@ -1,70 +1,19 @@
 # Hey Whizzy
 ## Capstone 2023IT07
-Capstone Project of:
-Andrei Magbuhat, John Tiu, Neil Guingcangco, and Owen Santos.
 
 <a href="https://github.com/Hir0su/Hey-Whizzy/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Hir0su/Hey-Whizzy" />
 </a>
 
+Capstone Project of:  
+Andrei Magbuhat, John Tiu, Neil Guingcangco, and Owen Santos.
+
 This is the Windows port for our capstone. This is a requirement for revisions and for our adviser's showcase.
 
-[Hey Whizzy's Raspi Repository](https://github.com/Hir0su/Hey-Whizzy)
+[Hey Whizzy's Raspi Repository](https://github.com/Hir0su/Hey-Whizzy)  
 [Hey Whizzy's Admin Website Repository](https://github.com/Hir0su/Hey-Whizzy-Admin-Website)
 
-# Guide
-
-## What to install in Raspi
-
-### Updating the Software of Raspi
-```
-sudo apt update
-sudo apt upgrade
-```
-
-### Updating Python for Raspi
-```
-sudo apt-get update
-sudo apt-get install python3-pip
-sudo apt-get install python3-venv
-```
-
-### Getting the Python directory
-```
-(Get-Command python).Source
-```
-
-### For Creation of Virtual Environment (venv)
-```
-python3 -m venv ~/my_project_venv
-```
-
-### Steps in activating the venv
-```
-source ~/my_project_venv/bin/activate
-cd my_project_venv
-code . 
-```
-
-### Explanation of steps above
-```
-ls = dir in windows
-cd = cd in windows
-code . = to run vs code on the selected directory
-```
-
-### Things to update globally
-```
-sudo apt-get install portaudio19-dev
-sudo apt-get install flac
-sudo apt-get install alsa-utils
-sudo apt-get install pulseaudio pulseaudio-utils
-sudo apt-get install libasound2-dev
-sudo apt-get install espeak
-sudo apt-get install espeak-ng
-sudo apt-get install flite
-sudo apt-get install python3-pyqt5
-```
+## Guide
 
 ### Things to update inside the venv (when venv is activated)
 ```
@@ -88,9 +37,9 @@ pip install imageio
 Download using nvm (choices) for the above command
 - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions-1
 
-In the raspi_python folder:
+In the /raspi folder:
 ```
-npx create-react-app frontend
+npx create-react-app ui
 npm install axios
 npm install socket.io-client
 ```
