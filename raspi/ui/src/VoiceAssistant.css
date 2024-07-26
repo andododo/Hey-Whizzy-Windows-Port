@@ -9,7 +9,7 @@ html, body {
 /* Import the Montserrat font */
 @font-face {
   font-family: 'Montserrat';
-  src: url('/home/whizzy/.fonts/Montserrat-Bold.ttf') format('truetype');
+  src: url('/home/whizzy/.fonts/Montserrat-Bold.ttf') format('truetype'); /*ned to change this later*/
   font-weight: normal;
   font-style: normal;
 }
