@@ -1,15 +1,15 @@
-html, body {
+/* html, body {
   height: 1920px;
   width: 1080px;
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
+} */
 
 /* Import the Montserrat font */
 @font-face {
   font-family: 'Montserrat';
-  src: url('/home/whizzy/.fonts/Montserrat-Bold.ttf') format('truetype'); /*ned to change this later*/
+  src: url('./Montserrat-Bold.ttf') format('truetype'); /*ned to change this later*/
   font-weight: normal;
   font-style: normal;
 }
