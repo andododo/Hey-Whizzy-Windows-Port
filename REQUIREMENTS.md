@@ -28,5 +28,9 @@ Libraries for the project
 pip install sounddevice
 pip install SpeechRecognition
 pip install simpleaudio
+pip install pyttsx3
+pip install lxml
+pip install pygame
+pip install flask-socketio
 
 ```

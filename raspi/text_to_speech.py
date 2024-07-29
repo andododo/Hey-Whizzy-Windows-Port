@@ -2,7 +2,6 @@ import pyttsx3
 import subprocess
 import simpleaudio
 import requests
-import lxml
 
 def start_speaking(output):
     # Change the command to create output.wav
