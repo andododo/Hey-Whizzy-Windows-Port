@@ -32,5 +32,5 @@ pip install pyttsx3
 pip install lxml
 pip install pygame
 pip install flask-socketio
-
+pip install Flask-MySQLdb
 ```
