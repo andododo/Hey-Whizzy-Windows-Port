@@ -5,7 +5,7 @@ import conversation_gemini
 import text_to_speech
 import get_prompt
 import fetch_request
-import sounddevice
+# import sounddevice
 import time
 import requests
 
