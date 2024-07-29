@@ -7,7 +7,7 @@ def list_microphones():
 
 def recognize_speech():
     # Specify the microphone index (you can find it in system settings)
-    mic_index = 1  # Change this to mic of use
+    mic_index = 6  # Change this to mic of use
 
     # Initialize the recognizer with a specific microphone
     recognizer = sr.Recognizer()

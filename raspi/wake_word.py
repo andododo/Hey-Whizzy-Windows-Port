@@ -25,11 +25,18 @@ import requests
 #     return json.loads(finalRecognition)
 
 def play_wav_file():
-    file_path = 'sounds/beep_down.wav'
-    
-    wave_obj = sa.WaveObject.from_wave_file(file_path)
-    play_obj = wave_obj.play()
-    play_obj.wait_done()  # Wait until sound is done playing
+    print("test 1")
+    try:
+        file_path = 'sounds/beep_down.wav'
+        print("test 2")
+        wave_obj = sa.WaveObject.from_wave_file(file_path)
+        print("test 3")
+        play_obj = wave_obj.play()
+        print("test 4")
+        play_obj.wait_done()  # Wait until sound is done playing
+        print("test 5")
+    except Exception as e:
+        print(e)
 
 def listen(mic_index):
     recognizer = sr.Recognizer()
@@ -71,7 +78,6 @@ def listen(mic_index):
             # text = result["text"]
             print("check 2")
             play_wav_file()
-            print("hello test")
             print(f"You said: {text.lower().strip()}")
 
             if text.lower().strip() in wake_word_list:
