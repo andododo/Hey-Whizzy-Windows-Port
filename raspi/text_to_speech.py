@@ -3,12 +3,17 @@ import subprocess
 import simpleaudio
 import requests
 
+# Gets the dicrectory of the script
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
 def start_speaking(output):
     # Change the command to create output.wav
-    command = f"echo \"{output}\" | ./piper/piper --model en_US-joe-medium.onnx --output_file output.wav"
+    piper_dir = r".\piper\piper.exe"
+    command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
 
     # Change the current working directory
-    cwd = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/piper"
+    cwd = os.path.join(os.path.dirname(current_dir), 'piper')
 
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
@@ -30,10 +35,11 @@ def start_speaking(output):
 
 def start_speaking_small(output, image_data):
     # Change the command to create output.wav
-    command = f"echo \"{output}\" | ./piper/piper --model en_US-joe-medium.onnx --output_file output.wav"
+    piper_dir = r".\piper\piper.exe"
+    command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
 
     # Change the current working directory
-    cwd = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/piper"
+    cwd = os.path.join(os.path.dirname(current_dir), 'piper')
 
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
@@ -58,11 +64,12 @@ def start_speaking_large(output):
     print("working for reply large")
 
     # Change the command to create output.wav
-    command = f"echo \"{output}\" | ./piper/piper --model en_US-joe-medium.onnx --output_file output.wav"
+    piper_dir = r".\piper\piper.exe"
+    command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
 
     # Change the current working directory
-    cwd = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/piper"
-
+    cwd = os.path.join(os.path.dirname(current_dir), 'piper')
+    
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
 

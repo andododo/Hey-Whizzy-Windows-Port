@@ -12,7 +12,7 @@ import requests
 def start():
     # Specify the microphone index (use microphone_list.py)
     # index 1 is usually the primary device used
-    mic_index = 2  # Change this to the mic to use
+    mic_index = 1  # Change this to the mic to use
     
     requests.post('http://localhost:5000/change_background', json={'index': 1})
 
