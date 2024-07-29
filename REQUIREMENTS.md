@@ -35,6 +35,7 @@ pip install pygame
 pip install flask-socketio
 pip install Flask-MySQLdb
 pip install PyAudio
+pip install python-dotenv
 ```
 
 Installing Piper TTS

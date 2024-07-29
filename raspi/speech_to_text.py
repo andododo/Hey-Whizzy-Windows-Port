@@ -25,8 +25,11 @@ import requests
 #     return json.loads(finalRecognition)
 
 def play_wav_file(type):
-    file_path1 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/granted.wav"
-    file_path2 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/beep_down.wav"
+    # file_path1 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/granted.wav"
+    # file_path2 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/beep_down.wav"
+    
+    file_path1 = 'sounds/granted.wav'
+    file_path2 = 'sounds/beep_down.wav'
     
     if type == 1:
         wave_obj = sa.WaveObject.from_wave_file(file_path1)
@@ -51,7 +54,7 @@ def recognize_speech(mic_index):
             requests.post('http://localhost:5000/idle_stop')
             audio = recognizer.listen(source, timeout=5)
             print("check 1")
-            model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
+            # model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
             text = recognizer.recognize_google(audio)
             # result = recognize_vosk_custom(audio, model_path=model_path)
             # text = result["text"]

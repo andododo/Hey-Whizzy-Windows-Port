@@ -25,7 +25,8 @@ import requests
 #     return json.loads(finalRecognition)
 
 def play_wav_file():
-    file_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/beep_down.wav"
+    file_path = 'sounds/beep_down.wav'
+    
     wave_obj = sa.WaveObject.from_wave_file(file_path)
     play_obj = wave_obj.play()
     play_obj.wait_done()  # Wait until sound is done playing
@@ -64,13 +65,13 @@ def listen(mic_index):
             requests.post('http://localhost:5000/idle_stop')
             print("check 1")
             #initialize.update_label("Recognizing",30)
-            model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
+            # model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
             text = recognizer.recognize_google(audio)
             # result = recognize_vosk_custom(audio, model_path=model_path)
             # text = result["text"]
             print("check 2")
             play_wav_file()
-
+            print("hello test")
             print(f"You said: {text.lower().strip()}")
 
             if text.lower().strip() in wake_word_list:

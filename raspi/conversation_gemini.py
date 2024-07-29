@@ -1,8 +1,15 @@
 import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Get env variables
+my_google_api = os.getenv('API_KEY')
 
 def setup():
 
-    API_KEY = 'get api key at https://ai.google.dev/'
+    API_KEY = my_google_api
     genai.configure(api_key=API_KEY)
     
 def get_response(command): 

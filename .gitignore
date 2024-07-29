@@ -1,1 +1,5 @@
 piper/en_US-joe-medium.onnx
+.env
+*.env
+.env.local
+.env.*.local
