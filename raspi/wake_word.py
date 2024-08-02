@@ -27,7 +27,7 @@ import requests
 def play_wav_file():
     print("test 1")
     try:
-        file_path = 'sounds/beep_down.wav'
+        file_path = 'sounds/beep_down.wav' # need to implement better file locator here
         print("test 2")
         wave_obj = sa.WaveObject.from_wave_file(file_path)
         print("test 3")
@@ -64,7 +64,7 @@ def listen(mic_index):
     with microphone as source:
         recognizer.adjust_for_ambient_noise(source)
         print("check 0")
-        
+
         try:
             print("[1]Listening for wake word...")
             requests.post('http://localhost:5000/idle')
