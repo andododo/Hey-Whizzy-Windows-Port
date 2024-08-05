@@ -1,14 +1,18 @@
 import text_to_speech
 import speech_to_text
 import requests
+import threading
+
+def change_background(index):
+    requests.post('http://localhost:5000/change_background', json={'index': index})
 
 def prompt_school():
-    requests.post('http://localhost:5000/change_background', json={'index': 3})
+    threading.Thread(target=change_background, args=(3,)).start()
     response = "Sure! What school-related question do you want to ask?"
     text_to_speech.start_speaking(response)
 
 def prompt_general():
-    requests.post('http://localhost:5000/change_background', json={'index': 4})
+    threading.Thread(target=change_background, args=(4,)).start()
     response = "Sure! I'll try my best answering! Ask ahead."
     text_to_speech.start_speaking(response)
 

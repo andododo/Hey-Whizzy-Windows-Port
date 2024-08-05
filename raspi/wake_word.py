@@ -2,6 +2,16 @@ import speech_recognition as sr
 import requests
 import pyaudio
 import wave
+import threading
+
+def change_background(index):
+    requests.post('http://localhost:5000/change_background', json={'index': index})
+
+def post_request(url, json=None):
+    try:
+        requests.post(url, json=json)
+    except requests.RequestException as e:
+        print(f"Error sending request to {url}: {e}")
 
 def play_wav_file():
     try:
@@ -57,9 +67,9 @@ def listen(mic_index):
 
         try:
             print("[1]Listening for wake word...")
-            requests.post('http://localhost:5000/idle')
+            threading.Thread(target=post_request, args=('http://localhost:5000/idle',)).start()
             audio = recognizer.listen(source, timeout=5)
-            requests.post('http://localhost:5000/idle_stop')
+            threading.Thread(target=post_request, args=('http://localhost:5000/idle_stop',)).start()
             print("check 1")
             # model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
             text = recognizer.recognize_google(audio)
@@ -71,7 +81,7 @@ def listen(mic_index):
 
             if text.lower().strip() in wake_word_list:
                 print("Wake word detected! Initiating speech recognition...")
-                requests.post('http://localhost:5000/change_background', json={'index': 2})
+                threading.Thread(target=change_background, args=(2,)).start()
                 return True
             else:
                 print("Not wake word...")

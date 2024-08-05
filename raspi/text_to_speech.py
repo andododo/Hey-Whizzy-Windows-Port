@@ -1,8 +1,8 @@
-import pyttsx3
 import subprocess
 import requests
 import pyaudio
 import wave
+import threading
 
 # Gets the directory of the script
 import os
