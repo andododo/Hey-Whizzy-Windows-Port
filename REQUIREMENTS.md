@@ -37,6 +37,7 @@ pip install Flask-MySQLdb
 pip install python-dotenv
 pip install sounddevice
 pip install soundfile
+pip install numpy
 ```
 Dropped
 ```shell

@@ -8,14 +8,6 @@ import requests
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-def play_audio(file_path):
-    # Read the audio file
-    data, samplerate = sf.read(file_path)
-    
-    # Play the audio
-    sd.play(data, samplerate)
-    sd.wait()  # Wait until the audio is finished playing
-
 def start_speaking(output):
     # Change the command to create output.wav
     piper_dir = r".\piper\piper.exe"
@@ -27,13 +19,14 @@ def start_speaking(output):
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
 
-    # Play the output.wav file
-    play_audio(f"{cwd}/output.wav")
-    print("audio played")
-
     # Send the reply to the backend UI
     requests.post('http://localhost:5000/reply', json={'reply': output})
 
+    # Play the output.wav file
+    data, samplerate = sf.read(f"{cwd}/output.wav")
+    sd.play(data, samplerate)
+    print("audio played")
+    sd.wait()  # Wait until the audio is finished playing
     print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
@@ -50,14 +43,15 @@ def start_speaking_small(output, image_data):
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
 
-    # Play the output.wav file
-    play_audio(f"{cwd}/output.wav")
-    print("audio played")
-
     # Send the reply to the backend UI
     requests.post('http://localhost:5000/reply', json={'reply': output})
     requests.post('http://localhost:5000/image_data', json={'image_data': image_data})
 
+    # Play the output.wav file
+    data, samplerate = sf.read(f"{cwd}/output.wav")
+    sd.play(data, samplerate)
+    print("audio played")
+    sd.wait()  # Wait until the audio is finished playing
     print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
@@ -69,20 +63,21 @@ def start_speaking_large(output):
     # Change the command to create output.wav
     piper_dir = r".\piper\piper.exe"
     command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
-
+    print(command)
     # Change the current working directory
     cwd = os.path.join(os.path.dirname(current_dir), 'piper')
     
     # Run the command
     subprocess.run(command, shell=True, cwd=cwd)
 
-    # Play the output.wav file
-    play_audio(f"{cwd}/output.wav")
-    print("audio played")
-
     # Send the reply to the backend UI
     requests.post('http://localhost:5000/reply_large', json={'reply': output})
 
+    # Play the output.wav file
+    data, samplerate = sf.read(f"{cwd}/output.wav")
+    sd.play(data, samplerate)
+    print("audio played")
+    sd.wait()  # Wait until the audio is finished playing
     print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
@@ -92,6 +87,7 @@ def no_pick_up():
     reply = "Sorry, I didn't quite hear you well."
     start_speaking(reply)
 
+# This is for school-related answers
 def set_reply(output, reply_type, image_data):
     if reply_type == 1:
         start_speaking_large(output)

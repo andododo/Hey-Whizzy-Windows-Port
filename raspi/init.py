@@ -53,7 +53,7 @@ def start():
                 # Step 3b.3 - gemini output to text-to-speech
                 the_text = f"this is inside the init.py: {output}"
                 print(the_text)
-                text_to_speech.start_speaking(output)
+                text_to_speech.start_speaking_large(output)
                 time.sleep(5)
             else:
                 text_to_speech.no_pick_up()
