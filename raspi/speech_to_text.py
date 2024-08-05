@@ -4,19 +4,35 @@ import pyaudio
 import wave
 
 def play_wav_file(type):
-    # file_path1 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/granted.wav"
-    # file_path2 = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/sounds/beep_down.wav"
-    
-    file_path1 = 'sounds/granted.wav'
-    file_path2 = 'sounds/beep_down.wav'
-    
-    if type == 1:
-        wave_obj = sa.WaveObject.from_wave_file(file_path1)
-    elif type == 2:
-        wave_obj = sa.WaveObject.from_wave_file(file_path2)
+    try:
+        file_path1 = 'sounds/granted.wav'
+        file_path2 = 'sounds/beep_down.wav'
+        
+        if type == 1:
+            wave_obj = wave.open(file_path1, 'rb')
+        elif type == 2:
+            wave_obj = wave.open(file_path2, 'rb')
+        
+        play_obj = pyaudio.PyAudio()
 
-    play_obj = wave_obj.play()
-    play_obj.wait_done()  # Wait until sound is done playing
+        stream = play_obj.open(format=play_obj.get_format_from_width(wave_obj.getsampwidth()),
+                        channels=wave_obj.getnchannels(),
+                        rate=wave_obj.getframerate(),
+                        output=True)
+        
+        chunk = 1024
+        data = wave_obj.readframes(chunk)
+
+        while data:
+            stream.write(data)
+            data =wave_obj.readframes(chunk)
+
+        stream.stop_stream()
+        stream.close()
+        play_obj.terminate()
+
+    except Exception as e:
+        print(e)
 
 def recognize_speech(mic_index):
     recognizer = sr.Recognizer()

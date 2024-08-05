@@ -4,7 +4,6 @@ import pyaudio
 import wave
 
 def play_wav_file():
-    print("test 1")
     try:
         file_path = 'sounds/beep_down.wav' # need to implement better file locator here
         wave_obj = wave.open(file_path, 'rb')
@@ -62,7 +61,6 @@ def listen(mic_index):
             audio = recognizer.listen(source, timeout=5)
             requests.post('http://localhost:5000/idle_stop')
             print("check 1")
-            #initialize.update_label("Recognizing",30)
             # model_path = "/home/whizzy/my_project_venv/Hey-Whizzy-main/raspi/raspi_python/model"
             text = recognizer.recognize_google(audio)
             # result = recognize_vosk_custom(audio, model_path=model_path)
