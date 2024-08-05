@@ -9,6 +9,11 @@ import fetch_request
 import time
 import requests
 
+# -------------------------------------------------------------
+# ONE THING I CAN IMPROVE IS MAYBE THE REQUESTS
+# MAYBE THREAD THEM SO THAT WAKE WORD PROCESS WOULD BE FASTER
+# -------------------------------------------------------------
+
 def start():
     # Specify the microphone index (use microphone_list.py)
     # index 1 is usually the primary device used
@@ -45,8 +50,10 @@ def start():
             if command is not None:
                 output = conversation_gemini.start_prompt(command)
                 requests.post('http://localhost:5000/change_background', json={'index': 6}) 
-                # Step 3b.3 - geminip output to text-to-speech
-                text_to_speech.start_speaking_large(output)
+                # Step 3b.3 - gemini output to text-to-speech
+                the_text = f"this is inside the init.py: {output}"
+                print(the_text)
+                text_to_speech.start_speaking(output)
                 time.sleep(5)
             else:
                 text_to_speech.no_pick_up()

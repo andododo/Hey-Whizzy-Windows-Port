@@ -34,9 +34,16 @@ pip install lxml
 pip install pygame
 pip install flask-socketio
 pip install Flask-MySQLdb
-pip install PyAudio
 pip install python-dotenv
+pip install sounddevice
+pip install soundfile
 ```
+Dropped
+```shell
+pip install PyAudio
+```
+
+
 
 Installing Piper TTS
 1. Get zip file for Windows (amd64). https://github.com/rhasspy/piper/releases/tag/2023.11.14-2

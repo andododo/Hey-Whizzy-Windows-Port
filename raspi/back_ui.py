@@ -13,7 +13,6 @@ def reply():
 @app.route('/reply_large', methods=['POST'])
 def reply_large():
     reply = request.get_json()['reply']
-    print(f"Emitting reply_large event with: {reply}")
     emit('reply_large', reply, namespace='', broadcast=True)
     return 'ok'
 
