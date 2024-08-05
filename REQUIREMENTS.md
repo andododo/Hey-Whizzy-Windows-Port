@@ -35,13 +35,14 @@ pip install pygame
 pip install flask-socketio
 pip install Flask-MySQLdb
 pip install python-dotenv
-pip install sounddevice
-pip install soundfile
-pip install numpy
+pip install PyAudio
+
 ```
 Dropped
 ```shell
-pip install PyAudio
+pip install sounddevice
+pip install soundfile
+pip install numpy
 ```
 
 

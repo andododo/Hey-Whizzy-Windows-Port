@@ -1,15 +1,14 @@
 import pyttsx3
 import subprocess
-import sounddevice as sd
-import soundfile as sf
 import requests
+import pyaudio
+import wave
 
 # Gets the directory of the script
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 def start_speaking(output):
-    # Change the command to create output.wav
     piper_dir = r".\piper\piper.exe"
     command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
 
@@ -22,18 +21,31 @@ def start_speaking(output):
     # Send the reply to the backend UI
     requests.post('http://localhost:5000/reply', json={'reply': output})
 
-    # Play the output.wav file
-    data, samplerate = sf.read(f"{cwd}/output.wav")
-    sd.play(data, samplerate)
-    print("audio played")
-    sd.wait()  # Wait until the audio is finished playing
-    print("audio finished")
+    # Play output.wav file
+    with wave.open(f"{cwd}/output.wav", 'rb') as wave_obj:
+        play_obj = pyaudio.PyAudio()
+        stream = play_obj.open(format=play_obj.get_format_from_width(wave_obj.getsampwidth()),
+                        channels=wave_obj.getnchannels(),
+                        rate=wave_obj.getframerate(),
+                        output=True)
+
+        chunk_size = 1024
+        data = wave_obj.readframes(chunk_size)
+
+        while data:
+            stream.write(data)
+            data = wave_obj.readframes(chunk_size)
+        print("audio played")
+
+        stream.stop_stream()
+        stream.close()
+        play_obj.terminate()
+        print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
     requests.post('http://localhost:5000/stop_talking')
 
 def start_speaking_small(output, image_data):
-    # Change the command to create output.wav
     piper_dir = r".\piper\piper.exe"
     command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
 
@@ -47,20 +59,34 @@ def start_speaking_small(output, image_data):
     requests.post('http://localhost:5000/reply', json={'reply': output})
     requests.post('http://localhost:5000/image_data', json={'image_data': image_data})
 
-    # Play the output.wav file
-    data, samplerate = sf.read(f"{cwd}/output.wav")
-    sd.play(data, samplerate)
-    print("audio played")
-    sd.wait()  # Wait until the audio is finished playing
-    print("audio finished")
+    # Play output.wav file
+    with wave.open(f"{cwd}/output.wav", 'rb') as wave_obj:
+        play_obj = pyaudio.PyAudio()
+        stream = play_obj.open(format=play_obj.get_format_from_width(wave_obj.getsampwidth()),
+                        channels=wave_obj.getnchannels(),
+                        rate=wave_obj.getframerate(),
+                        output=True)
+
+        chunk_size = 1024
+        data = wave_obj.readframes(chunk_size)
+
+        while data:
+            stream.write(data)
+            data = wave_obj.readframes(chunk_size)
+        print("audio played")
+
+        stream.stop_stream()
+        stream.close()
+        play_obj.terminate()
+        print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
     requests.post('http://localhost:5000/stop_talking')
 
 def start_speaking_large(output):
-    print("working for reply large")
+    print("inside for reply large")
+    output = output.strip() # Removes new lines and spaces; usage is for shell command
 
-    # Change the command to create output.wav
     piper_dir = r".\piper\piper.exe"
     command = f"echo '{output}' | {piper_dir} --model en_US-joe-medium.onnx --output_file output.wav"
     print(command)
@@ -73,12 +99,26 @@ def start_speaking_large(output):
     # Send the reply to the backend UI
     requests.post('http://localhost:5000/reply_large', json={'reply': output})
 
-    # Play the output.wav file
-    data, samplerate = sf.read(f"{cwd}/output.wav")
-    sd.play(data, samplerate)
-    print("audio played")
-    sd.wait()  # Wait until the audio is finished playing
-    print("audio finished")
+    # Play output.wav file
+    with wave.open(f"{cwd}/output.wav", 'rb') as wave_obj:
+        play_obj = pyaudio.PyAudio()
+        stream = play_obj.open(format=play_obj.get_format_from_width(wave_obj.getsampwidth()),
+                        channels=wave_obj.getnchannels(),
+                        rate=wave_obj.getframerate(),
+                        output=True)
+
+        chunk_size = 1024
+        data = wave_obj.readframes(chunk_size)
+
+        while data:
+            stream.write(data)
+            data = wave_obj.readframes(chunk_size)
+        print("audio played")
+
+        stream.stop_stream()
+        stream.close()
+        play_obj.terminate()
+        print("audio finished")
 
     # Send a message to the frontend to stop the talking animation
     requests.post('http://localhost:5000/stop_talking')
