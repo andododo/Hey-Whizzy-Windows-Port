@@ -9,12 +9,6 @@ import fetch_request
 import time
 import requests
 
-# 1. Provide more instructions and reinforcement
-# Please wait for my reply!
-# Choose which mode
-# Thank you!
-# Please use English!
-
 def start():
     # Specify the microphone index (use microphone_list.py)
     # index 1 is usually the primary device used

@@ -1,40 +1,31 @@
 import speech_recognition as sr
-import simpleaudio as sa
 import requests
-
-# Default will be Google Speech Recognition API for language model
-# Uncomment lines below if vosk is needed for language model
-# from vosk import KaldiRecognizer, Model, SetLogLevel
-# Set the log level to suppress the Vosk log messages
-
-# SetLogLevel(-1)
-
-# def recognize_vosk_custom(audio_data, language='en', model_path=None):
-#     if model_path is None:
-#         model_path = "model"
-#     if not os.path.exists(model_path):
-#         return f"Please download the model and provide the path to the 'model' folder."
-#         exit(1)
-    
-#     model = Model(model_path)
-#     rec = KaldiRecognizer(model, 16000)
-    
-#     rec.AcceptWaveform(audio_data.get_raw_data(convert_rate=16000, convert_width=2))
-#     finalRecognition = rec.FinalResult()
-    
-#     return json.loads(finalRecognition)
+import pyaudio
+import wave
 
 def play_wav_file():
     print("test 1")
     try:
         file_path = 'sounds/beep_down.wav' # need to implement better file locator here
-        print("test 2")
-        wave_obj = sa.WaveObject.from_wave_file(file_path)
-        print("test 3")
-        play_obj = wave_obj.play()
-        print("test 4")
-        play_obj.wait_done()  # Wait until sound is done playing
-        print("test 5")
+        wave_obj = wave.open(file_path, 'rb')
+        play_obj = pyaudio.PyAudio()
+
+        stream = play_obj.open(format=play_obj.get_format_from_width(wave_obj.getsampwidth()),
+                        channels=wave_obj.getnchannels(),
+                        rate=wave_obj.getframerate(),
+                        output=True)
+        
+        chunk = 1024
+        data = wave_obj.readframes(chunk)
+
+        while data:
+            stream.write(data)
+            data =wave_obj.readframes(chunk)
+
+        stream.stop_stream()
+        stream.close()
+        play_obj.terminate()
+
     except Exception as e:
         print(e)
 
