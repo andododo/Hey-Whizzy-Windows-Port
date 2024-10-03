@@ -1,11 +1,12 @@
 # Setup Guide
 
 ## In the /raspi folder:
-For creating new UI:
+(Optional) For creating new UI:
 ```shell
 npx create-react-app ui
 ```
 
+After cloning, proceed with this on the /ui folder.
 ```shell
 npm install
 npm install axios
@@ -16,7 +17,8 @@ npm install socket.io-client
 Delete node_modules if something went wrong.
 
 A README file will be created on how to use the React, please check.
-TL: use `npm start` on the frontend folder using cli
+
+TL: use `npm start` on the frontend folder using cli to start the UI alone.
 
 Make sure `pip` is installed and updated.
 ```shell
@@ -49,6 +51,7 @@ pip install PyAudio
 
 ## Gemini API Key
 Get  your API key here: https://aistudio.google.com/app/apikey
+
 For more information: https://ai.google.dev/
 
 
@@ -56,4 +59,4 @@ For more information: https://ai.google.dev/
 ```shell
 ipconfig /all
 ```
-Find the '(Preferred)'
+Find the '(Preferred)' IPv4 address for your device.
