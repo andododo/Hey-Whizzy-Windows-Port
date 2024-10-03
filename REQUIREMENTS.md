@@ -23,7 +23,7 @@ Make sure `pip` is installed and updated.
 pip install --upgrade pip
 ```
 
-Prerequisites
+## Prerequisites
 ```shell
 pip install wheel
 pip install --upgrade wheel
@@ -32,7 +32,7 @@ pip install --upgrade setuptools
 ```
 Also, install C++ [Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
 
-Libraries for the project
+## Libraries for the project
 ```shell
 pip install sounddevice
 pip install SpeechRecognition
@@ -46,16 +46,8 @@ pip install python-dotenv
 pip install PyAudio
 
 ```
-Dropped
-```shell
-pip install sounddevice
-pip install soundfile
-pip install numpy
-```
 
-
-
-Installing Piper TTS
+## Installing Piper TTS 
 1. Get zip file for Windows (amd64). https://github.com/rhasspy/piper/releases/tag/2023.11.14-2
 2. In `main` folder (that would be: Hey_Whizzy-Windows-Port), create a folder named `piper`.
 3. Move downloaded zip file there, and then 'extract here'.

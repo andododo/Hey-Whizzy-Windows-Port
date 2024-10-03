@@ -5,8 +5,8 @@ import wave
 
 def play_wav_file(type):
     try:
-        file_path1 = 'sounds/granted.wav'
-        file_path2 = 'sounds/beep_down.wav'
+        file_path1 = r'raspi\sounds\granted.wav'
+        file_path2 = r'raspi\sounds\beep_down.wav'
         
         if type == 1:
             wave_obj = wave.open(file_path1, 'rb')

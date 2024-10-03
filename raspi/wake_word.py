@@ -3,6 +3,7 @@ import requests
 import pyaudio
 import wave
 import threading
+import os
 
 def change_background(index):
     requests.post('http://localhost:5000/change_background', json={'index': index})
@@ -15,7 +16,7 @@ def post_request(url, json=None):
 
 def play_wav_file():
     try:
-        file_path = 'sounds/beep_down.wav' # need to implement better file locator here
+        file_path = r'raspi\sounds\beep_down.wav' # need to implement better file locator here
         wave_obj = wave.open(file_path, 'rb')
         play_obj = pyaudio.PyAudio()
 
