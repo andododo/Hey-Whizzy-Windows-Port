@@ -1,4 +1,4 @@
-# Dev requirements
+# Setup Guide
 
 ## In the /raspi folder:
 For creating new UI:
@@ -12,7 +12,7 @@ npm install axios
 npm install socket.io-client
 ```
 
-## NPM troubleshooting:
+## NPM troubleshooting
 Delete node_modules if something went wrong.
 
 A README file will be created on how to use the React, please check.
@@ -46,3 +46,14 @@ pip install python-dotenv
 pip install PyAudio
 
 ```
+
+## Gemini API Key
+Get  your API key here:
+https://ai.google.dev/
+https://aistudio.google.com/app/apikey
+
+## Get IPv4 Address
+```shell
+ipconfig /all
+```
+Find the '(Preferred)'
