@@ -1,11 +1,19 @@
 # Dev requirements
 
 ## In the /raspi folder:
+For creating new UI:
 ```shell
 npx create-react-app ui
+```
+
+```shell
+npm install
 npm install axios
 npm install socket.io-client
 ```
+
+## NPM troubleshooting:
+Delete node_modules if something went wrong.
 
 A README file will be created on how to use the React, please check.
 TL: use `npm start` on the frontend folder using cli
