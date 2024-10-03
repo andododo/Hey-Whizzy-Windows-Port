@@ -48,9 +48,9 @@ pip install PyAudio
 ```
 
 ## Gemini API Key
-Get  your API key here:
-https://ai.google.dev/
-https://aistudio.google.com/app/apikey
+Get  your API key here: https://aistudio.google.com/app/apikey
+For more information: https://ai.google.dev/
+
 
 ## Get IPv4 Address
 ```shell
